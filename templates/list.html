@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{% include 'head.html' %}
+	</head>
+	<body>
+		{% include 'navigation.html' %}
+
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>{{heading}}</h2>
+					<div class="row">
+					{% for person in people %}
+						<div class="col-xs-6">
+							<h5>{{person.first_name}} {{person.last_name}}</h5>
+							{% if roles %}
+								<small>{{person.position}}</small>
+							{% endif %}
+
+							<a href="/person/{{person.person_id}}">
+								<img class="image" style="width: 100%;" src="/static/images/{{person.image}}" alt="{{person.first_name}} {{person.last_name}}" />
+							</a>
+						</div>
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{% include 'footer.html' %}
+	</body>
+</html>
+
+
