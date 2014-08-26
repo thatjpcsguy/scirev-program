@@ -44,15 +44,68 @@ def conn():
 
 @app.route("/")
 def hello():
+    
+    return render_template('index.html')
+
+
+@app.route('/person/<id>')
+def person(id):
     db, db_cur = conn()
-    r = db_cur.execute("SELECT * FROM person")
+    r = db_cur.execute("SELECT * FROM person WHERE person_id = %s" % id)
+    rows = db_cur.fetchall()
+    person = rows[0]
+
+    return render_template('person.html', person=person)
+
+
+@app.route("/band")
+def band():
+    db, db_cur = conn()
+    r = db_cur.execute("SELECT * FROM person WHERE band")
     rows = db_cur.fetchall()
 
-    print rows
+    return render_template('list.html', people=rows, heading="Band")
+
+@app.route("/actors")
+def actors():
+    db, db_cur = conn()
+    r = db_cur.execute("SELECT * FROM person WHERE acting")
+    rows = db_cur.fetchall()
+
+    return render_template('list.html', people=rows, heading="Actors")
+
+@app.route("/singers")
+def singers():
+    db, db_cur = conn()
+    r = db_cur.execute("SELECT * FROM person WHERE singing")
+    rows = db_cur.fetchall()
+
+    return render_template('list.html', people=rows, heading="Singers")
+
+@app.route("/dancers")
+def dancers():
+    db, db_cur = conn()
+    r = db_cur.execute("SELECT * FROM person WHERE dancing")
+    rows = db_cur.fetchall()
+
+    return render_template('list.html', people=rows, heading="Dancers")
 
 
-    return render_template('index.html', people=rows)
+@app.route("/production")
+def production():
+    db, db_cur = conn()
+    r = db_cur.execute("SELECT * FROM person p JOIN production x ON p.person_id = x.person_id")
+    rows = db_cur.fetchall()
 
+    return render_template('list.html', people=rows, heading="Production", roles=True)
+
+@app.route("/executive")
+def executive():
+    db, db_cur = conn()
+    r = db_cur.execute("SELECT * FROM person p JOIN executive x ON p.person_id = x.person_id")
+    rows = db_cur.fetchall()
+
+    return render_template('list.html', people=rows, heading="Executive", roles=True)
 
 
 

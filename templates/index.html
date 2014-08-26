@@ -1,63 +1,27 @@
 <!DOCTYPE html>
-<head>
+<html>
+	<head>
+		{% include 'head.html' %}
+	</head>
+	<body>
+		{% include 'navigation.html' %}
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-</head>
-<body>
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Science Revue 2014</a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Link</a></li>
-					<li><a href="#">Link</a></li>
-					<li><a href="#">Link</a></li>
-					<li><a href="#">Link</a></li>
-					<li><a href="#">Link</a></li>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12">
-
-				<h1>Cirque Du Science Presents Trapeze Get Degrees</h1>
-				<blockquote>
-					<p>The best thing since sliced bread</p>
-					<footer>James Cooper-Stanbury</footer>
-				</blockquote>
-		
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2><small>Cirque Du Science Presents:</small><br />Trapeze Get Degrees</h2>
+					<div class="video_wrapper">
+						<iframe width="100%" height="200px" src="//www.youtube.com/embed/n-1ZMYBlVXw" frameborder="0" allowfullscreen></iframe>
+					</div>
+					<blockquote>
+						<p>The best thing since sliced bread</p>
+						<footer>James Cooper-Stanbury</footer>
+					</blockquote>
+			
+				</div>
 			</div>
 		</div>
 
-		{% for person in people %}
-	    <p>{{person.first_name}} {{person.last_name}}</p>
-	    <img class="image" style="width: 100%;" src="/static/images/{{person.image}}" alt="{{person.first_name}} {{person.last_name}}" />
-	    {% endfor %}
-
-
-	</div>
-</body>
+		{% include 'footer.html' %}
+	</body>
+</html>
