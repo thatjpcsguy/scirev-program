@@ -6,8 +6,6 @@ from flask import render_template
 import hashlib
 import base64
 import os
-import PIL
-from PIL import Image
 from werkzeug.contrib.fixers import ProxyFix
 
 import MySQLdb
@@ -112,4 +110,4 @@ def executive():
 
 if __name__ == "__main__":
 
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=8000)
