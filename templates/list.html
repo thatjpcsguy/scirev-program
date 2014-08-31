@@ -12,7 +12,7 @@
 					<h2>{{heading}}</h2>
 					<div class="row">
 					{% for person in people %}
-						<div class="col-xs-6" style="min-height: 300px;">
+						<div class="col-xs-6 col-md-4 col-lg-3" style="min-height: 300px;">
 							<a href="/person/{{person.seo_url}}">
 								<img class="image" style="width: 100%;" src="/static/images/{{person.seo_url}}.jpg" alt="{{person.first_name}} {{person.last_name}}" />
 							</a>
