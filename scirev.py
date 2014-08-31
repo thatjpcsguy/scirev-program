@@ -51,7 +51,7 @@ def hello():
 @app.route('/person/<id>')
 def person(id):
     db, db_cur = conn()
-    r = db_cur.execute("SELECT * FROM person WHERE person_id = %s" % id)
+    r = db_cur.execute("SELECT * FROM person WHERE seo_url = '%s' ORDER BY first_name, last_name" % id)
     rows = db_cur.fetchall()
     person = rows[0]
 
@@ -61,7 +61,7 @@ def person(id):
 @app.route("/band")
 def band():
     db, db_cur = conn()
-    r = db_cur.execute("SELECT * FROM person WHERE band")
+    r = db_cur.execute("SELECT * FROM person WHERE band ORDER BY first_name, last_name")
     rows = db_cur.fetchall()
 
     return render_template('list.html', people=rows, heading="Band")
@@ -69,7 +69,7 @@ def band():
 @app.route("/actors")
 def actors():
     db, db_cur = conn()
-    r = db_cur.execute("SELECT * FROM person WHERE acting")
+    r = db_cur.execute("SELECT * FROM person WHERE acting ORDER BY first_name, last_name")
     rows = db_cur.fetchall()
 
     return render_template('list.html', people=rows, heading="Actors")
@@ -77,7 +77,7 @@ def actors():
 @app.route("/singers")
 def singers():
     db, db_cur = conn()
-    r = db_cur.execute("SELECT * FROM person WHERE singing")
+    r = db_cur.execute("SELECT * FROM person WHERE singing ORDER BY first_name, last_name")
     rows = db_cur.fetchall()
 
     return render_template('list.html', people=rows, heading="Singers")
@@ -85,7 +85,7 @@ def singers():
 @app.route("/dancers")
 def dancers():
     db, db_cur = conn()
-    r = db_cur.execute("SELECT * FROM person WHERE dancing")
+    r = db_cur.execute("SELECT * FROM person WHERE dancing ORDER BY first_name, last_name")
     rows = db_cur.fetchall()
 
     return render_template('list.html', people=rows, heading="Dancers")
@@ -94,7 +94,7 @@ def dancers():
 @app.route("/production")
 def production():
     db, db_cur = conn()
-    r = db_cur.execute("SELECT * FROM person p JOIN production x ON p.person_id = x.person_id")
+    r = db_cur.execute("SELECT * FROM person p JOIN production x ON p.person_id = x.person_id  ORDER BY first_name, last_name")
     rows = db_cur.fetchall()
 
     return render_template('list.html', people=rows, heading="Production", roles=True)
@@ -102,7 +102,7 @@ def production():
 @app.route("/executive")
 def executive():
     db, db_cur = conn()
-    r = db_cur.execute("SELECT * FROM person p JOIN executive x ON p.person_id = x.person_id")
+    r = db_cur.execute("SELECT * FROM person p JOIN executive x ON p.person_id = x.person_id  ORDER BY first_name, last_name")
     rows = db_cur.fetchall()
 
     return render_template('list.html', people=rows, heading="Executive", roles=True)

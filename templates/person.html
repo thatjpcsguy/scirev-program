@@ -8,13 +8,11 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-12">
+				<div class="col-xs-12 col-md-8 col-md-offset-2">
 					<h1>{{person.first_name}} {{person.last_name}}</h1>
-					<img class="image" style="width: 100%;" src="/static/images/{{person.image}}" alt="{{person.first_name}} {{person.last_name}}" />
+					<img class="image" style="width: 100%;" src="/static/images//{{person.seo_url}}.jpg" alt="{{person.first_name}} {{person.last_name}}" />
 					<br /><br />
-					<blockquote>
-						{{person.bio}}
-					</blockquote>
+					<blockquote>{{person.bio}}</blockquote>
 				</div>
 			</div>
 		</div>
