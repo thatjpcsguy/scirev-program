@@ -47,19 +47,19 @@ def hello():
 
 @app.route("/notes")
 def notes():
-    return render_template('notes.html')
+    return render_template('notes.html', page_title='Show Notes')
 
 @app.route("/thankyou")
 def thankyou():
-    return render_template('thankyou.html')
+    return render_template('thankyou.html', page_title='Thankyou')
 
 @app.route("/gallery")
 def gallery():
-    return render_template('gallery.html')
+    return render_template('gallery.html', page_title='Gallery')
 
 @app.route("/videos")
 def videos():
-    return render_template('video.html')
+    return render_template('video.html', page_title='Videos')
 
 
 
@@ -70,7 +70,8 @@ def person(id):
     rows = db_cur.fetchall()
     person = rows[0]
 
-    return render_template('person.html', person=person)
+    title = person['first_name'] + ' ' + person['last_name']
+    return render_template('person.html', person=person, page_title=title)
 
 
 @app.route("/band")
@@ -79,7 +80,7 @@ def band():
     r = db_cur.execute("SELECT * FROM person WHERE band ORDER BY first_name, last_name")
     rows = db_cur.fetchall()
 
-    return render_template('list.html', people=rows, heading="Band")
+    return render_template('list.html', people=rows, heading="Band", page_title="Band")
 
 @app.route("/actors")
 def actors():
@@ -87,7 +88,7 @@ def actors():
     r = db_cur.execute("SELECT * FROM person WHERE acting ORDER BY first_name, last_name")
     rows = db_cur.fetchall()
 
-    return render_template('list.html', people=rows, heading="Actors")
+    return render_template('list.html', people=rows, heading="Actors", page_title="Actors")
 
 @app.route("/singers")
 def singers():
@@ -95,7 +96,7 @@ def singers():
     r = db_cur.execute("SELECT * FROM person WHERE singing ORDER BY first_name, last_name")
     rows = db_cur.fetchall()
 
-    return render_template('list.html', people=rows, heading="Singers")
+    return render_template('list.html', people=rows, heading="Singers", page_title="Singers")
 
 @app.route("/dancers")
 def dancers():
@@ -103,7 +104,7 @@ def dancers():
     r = db_cur.execute("SELECT * FROM person WHERE dancing ORDER BY first_name, last_name")
     rows = db_cur.fetchall()
 
-    return render_template('list.html', people=rows, heading="Dancers")
+    return render_template('list.html', people=rows, heading="Dancers", page_title="Dancers")
 
 
 @app.route("/production")
@@ -112,7 +113,7 @@ def production():
     r = db_cur.execute("SELECT * FROM person p JOIN production x ON p.person_id = x.person_id  ORDER BY first_name, last_name")
     rows = db_cur.fetchall()
 
-    return render_template('list.html', people=rows, heading="Production", roles=True)
+    return render_template('list.html', people=rows, heading="Production", page_title="Production", roles=True)
 
 @app.route("/executive")
 def executive():
@@ -120,7 +121,7 @@ def executive():
     r = db_cur.execute("SELECT * FROM person p JOIN executive x ON p.person_id = x.person_id  ORDER BY first_name, last_name")
     rows = db_cur.fetchall()
 
-    return render_template('list.html', people=rows, heading="Executive", roles=True)
+    return render_template('list.html', people=rows, heading="Executive", page_title="Executive", roles=True)
 
 
 
