@@ -42,8 +42,25 @@ def conn():
 
 @app.route("/")
 def hello():
-    
     return render_template('index.html')
+
+
+@app.route("/notes")
+def notes():
+    return render_template('notes.html')
+
+@app.route("/thankyou")
+def thankyou():
+    return render_template('thankyou.html')
+
+@app.route("/gallery")
+def gallery():
+    return render_template('gallery.html')
+
+@app.route("/videos")
+def videos():
+    return render_template('video.html')
+
 
 
 @app.route('/person/<id>')
