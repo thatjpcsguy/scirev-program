@@ -12,14 +12,17 @@
 					<h2>{{heading}}</h2>
 					<div class="row">
 					{% for person in people %}
-						<div class="col-xs-6 col-md-4 col-lg-3" style="min-height: 300px;">
+					 <!-- style="min-height: 300px;" -->
+						<div class="col-xs-4 col-md-4 col-lg-3">
 							<a href="/person/{{person.seo_url}}">
-								<img class="image" style="width: 100%;" src="/static/images/{{person.seo_url}}.jpg" alt="{{person.first_name}} {{person.last_name}}" />
+								<img class="image" style="width: 100%;" src="/static/images/{{person.seo_url}}.jpg" alt="{{person.first_name}} {{person.last_name}}" /><br />
+								{{person.first_name}}<br />
 							</a>
-							<h5>{{person.first_name}} {{person.last_name}}</h5>
+							<h5> </h5>
+							<!-- {{person.last_name}}
 							{% if roles %}
 								<small>{{person.position}}</small>
-							{% endif %}
+							{% endif %} -->
 
 							
 						</div>
