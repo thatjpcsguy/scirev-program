@@ -11,8 +11,6 @@ from werkzeug.contrib.fixers import ProxyFix
 import MySQLdb
 import MySQLdb.cursors
 from base64 import decodestring
-from apns import APNs, Payload
-
 
 import json
 import _mysql
